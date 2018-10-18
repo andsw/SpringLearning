@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="cnjxufe.beans.Hello"/>
+
+    <bean id="car" class="cnjxufe.beans.Car">
+        <constructor-arg value="audi" index="0"/>
+        <constructor-arg value="Shanghai"/>
+        <constructor-arg value="250" type="int"/>
+    </bean>
+
+    <bean id="car1" class="cnjxufe.beans.Car">
+        <constructor-arg index="0">
+            <value><![CDATA[<lexus>]]></value>
+        </constructor-arg>
+        <constructor-arg>
+            <null/>
+        </constructor-arg>
+        <constructor-arg value="250" type="int"/>
+    </bean>
+
+    <!--可以用p：属性来设置属性值！-->
+    <bean id="car2" class="cnjxufe.beans.Car" p:name="lexus" p:localtion="Shanghai" p:max_speed="250"/>
+
+    <!--可以使用ref来进行bean之间的引用-->
+
+    <bean id="person" class="cnjxufe.beans.Person">
+        <property name="name" value="heshaowen"/>
+        <property name="age" value="18"/>
+        <property name="car" ref="car"/>
+    </bean>
+
+    <!--或者可以直接写个匿名内部bean，不可以被外部其他bean调用！-->
+
+    <bean id="person1" class="cnjxufe.beans.Person">
+        <property name="name" value="heshaowen1"/>
+        <property name="age" value="18"/>
+        <property name="car">
+            <bean class="cnjxufe.beans.Car">
+                <property name="name" value="benz"/>
+                <property name="localtion" value="Beijing"/>
+                <property name="max_speed" value="250"/>
+            </bean>
+        </property>
+    </bean>
+
+</beans>
