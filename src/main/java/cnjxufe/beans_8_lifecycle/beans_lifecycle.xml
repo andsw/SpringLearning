@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <bean id="car" class="cnjxufe.beans_8_lifecycle.Car" p:name="audi" p:color="white" p:price="100000" destroy-method="destroy" init-method="inite"/>
+
+    <!--output :
+        init method in car
+        destroy method in car-->
+
+    <!--
+    生命周期的五个步骤：
+    - 通过构造器或工厂方法创建bean的实例
+    - 为bean的属性设置值或调用其他的bean
+    - 调用bean的初始化方法
+    - bean的使用
+    - 当容器关闭时调用bean的销毁方法！
+    -->
+
+
+    <!--
+    spring提供了BeanPostProcess接口，实现此接口并重写其：
+    PostProcessBeforeInitiate(Object object, String beanName) //在init被调用前调用
+    PostProcessBeforeInitiate(Object object, String beanName) //在init被调用后调用
+    两个方法可以实现更细致的bean的生命周期
+
+    参数 bean 代表的是实例本身
+    参数 beanName 代表的是bean1的名字
+
+    返回值实际上返回bean的实例，可以在以上两个方法中修改bean甚至用别的bean1
+    代替原来的bean！
+
+    所以现在的生命周期就要加上调用这两个方法的两步了！
+    -->
+
+
+    <!--配置bean的后置处理器-->
+    <bean id="carPostProcess" class="cnjxufe.beans_8_lifecycle.CarPostProcess"/>
+
+</beans>

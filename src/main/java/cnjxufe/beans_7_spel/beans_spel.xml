@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--spel对于bean的动态赋值提供了便利-->
+
+    <!--spel的功能：
+            - 直接通过bean的id引用bean
+            - 调用方法以及引用对象中的属性
+            - 计算表达式的值
+            - 正则表达式的匹配！
+    -->
+
+    <!--
+    支持：
+    +-*/%^
+    +还可以做字符串连接
+    比较运算符：<,>,==,>=,<=,lt,gt,eq,le,ge
+    逻辑运算符：and,or,nor,|
+    if-else运算符：？()：()
+    if-else变体：？：()
+    正则表达式 matches()
+    调用静态方法和静态属性：‘#{T(java.lang.math).PI}’
+
+    以下部分实例
+    -->
+
+    <bean id="singleDog" class="cnjxufe.beans_7_spel.Person" p:name="zhangsan" p:age="23" p:location="Shanghai" />
+
+    <bean id="couple" class="cnjxufe.beans_7_spel.Person" p:name='#{"lisi"}' p:age='#{singleDog.age - 3}' p:location='#{singleDog.getLocation().toLowerCase() + " " + "Chaoyang District"}'/>
+
+</beans>
