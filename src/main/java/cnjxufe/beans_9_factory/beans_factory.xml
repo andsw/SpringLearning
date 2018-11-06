@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="cnjxufe.beans_9_factory.StaticFactory" id="manFromStaticFactory" factory-method="createPerson">
+        <constructor-arg name="name" value="tom"/>
+    </bean>
+
+    <bean id="instanceFactory" class="cnjxufe.beans_9_factory.InstanceFactory"/>
+
+    <bean id="manFromInstanceFactory" class="cnjxufe.beans_9_factory.Person" factory-bean="instanceFactory" factory-method="getInstance">
+        <constructor-arg value="Mike"/>
+    </bean>
+
+    <bean id="manFromAPIFactory" class="cnjxufe.beans_9_factory.PersonFactoryBean">
+    </bean>
+</beans>
