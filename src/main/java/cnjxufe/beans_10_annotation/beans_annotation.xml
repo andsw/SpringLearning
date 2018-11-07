@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--
+Spring-SpringMVC项目中一般都会把applicationContext.xml （Spring配置文件）和spring-mvc.xml（SpringMVC配置文件）进行分开配置。
+
+在applicationContext.xml 只对一些事务逻辑的注解扫描：@Component、@Repository、@Service
+
+在spring-mvc.xml中只对控制器注解扫描：@Controller、@RestController、@ControllerAdvice
+-->
+
+
+    <!-- 可以在component-scan后面加上resource-pattern来指定资源-->
+    <context:component-scan base-package="cnjxufe.beans_10_annotation.AllBeans">
+        <!--还可以指定若干个 Exclude-filter 和 include-filter子节点，他们分别表示要排除的类和包括的类！-->
+        <!--这两个子节点支持五中过滤表达式种类 : assignable、regex、custom、aspectj、annotation-->
+        <!--以下指定的是扩展了PersonRepositoryImpl接口的类-->
+<!--貌似 include-filter 一定要在exclude-filter前面，不然会报错！而且这个子节点要配合 use-default-filter 使用-->
+
+
+
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <!--<context:exclude-filter type="assignable" expression="cnjxufe.beans_10_annotation.AllBeans.Repository.PersonRepositoryImpl"/>-->
+    </context:component-scan>
+
+</beans>
