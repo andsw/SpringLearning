@@ -8,13 +8,11 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  * @create 2018-10-28  14:34
  */
 public class CarPostProcess implements BeanPostProcessor {
-    @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("postProcessBeforeInitialization method with bean " + beanName);
         return bean;
     }
 
-    @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("postProcessAfterInitialization method with bean " + beanName);
         Car car = new Car();

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("personRepository")
 public class PersonRepositoryImpl implements PersonRepository {
-    @Override
+
     public void save() {
         System.out.println("personRepository is saving");
     }

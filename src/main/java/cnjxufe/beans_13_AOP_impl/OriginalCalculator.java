@@ -1,11 +1,18 @@
-package cnjxufe.beans_12_AOP;
+package cnjxufe.beans_13_AOP_impl;
+
+import org.springframework.stereotype.Component;
 
 /**
  * @author hsw
  * @create 2018-11-07  16:05
  */
-public class OriginalCalculator implements CalculatorInterface {
+@Component("calculator")
+public class OriginalCalculator implements CalculatorInterface{
+
     public int add(int a, int b) {
+        System.out.println();
+        System.out.println("the add method is executing!");
+        System.out.println();
         return a + b;
     }
 
