@@ -17,5 +17,10 @@ public class Main {
         int result = calculator.add(1, 1);
         System.out.println(result);
 
+
+        int res = calculator.div(5, 1);
+        System.out.println(res);
+
+//        System.out.println(calculator.div(5, 0));
     }
 }
