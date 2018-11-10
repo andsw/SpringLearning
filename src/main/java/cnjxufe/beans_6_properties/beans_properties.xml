@@ -6,7 +6,7 @@
     <!--如果加上下面这句就报错可以试试将前面的约束中
      xmlns:context="http://www.springframework.org/schema/util修改为
      xmlns:context="http://www.springframework.org/schema/context"即可！-->
-    <context:property-placeholder location="classpath:Car/db.properties"/>
+    <context:property-placeholder location="classpath:cnjxufe/beans_6_properties/db.properties"/>
 
     <!--我们在开发过程中可能会直接将一些属性信息直接写在spring的配置文件中，但是一旦有改
     变，修改此文件会显得很复杂，比如下面的这个datasource可能会有很多，但如果我们将这些配
